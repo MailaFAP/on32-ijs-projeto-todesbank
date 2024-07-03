@@ -1,0 +1,65 @@
+<mxfile host="65bd71144e">
+    <diagram id="zGJvNNN-_vGTe-rHLD0z" name="Page-1">
+        <mxGraphModel dx="365" dy="702" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="43" value="Cliente" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="70" width="240" height="260" as="geometry">
+                        <mxRectangle x="375" y="535" width="170" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="44" value="id: number&lt;br&gt;nomeCompleto: string&lt;br&gt;endereco: string&lt;br&gt;telefone: string&lt;br&gt;renda: number&amp;nbsp;&lt;br&gt;contas: Conta&lt;br&gt;gerente: Gerente" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="43" vertex="1">
+                    <mxGeometry y="30" width="240" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="45" value="constructor()&amp;nbsp;&lt;br&gt;abrirConta(conta: ContaBancaria): void&amp;nbsp;&lt;br&gt;fecharConta(conta: ContaBancaria): void&amp;nbsp;&lt;br&gt;mudarTipoConta(conta: ContaBancaria, novoTipo:string): void&amp;nbsp;" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="43" vertex="1">
+                    <mxGeometry y="150" width="240" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="46" value="Conta" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="400" width="185" height="100" as="geometry">
+                        <mxRectangle x="375" y="535" width="170" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="47" value="cliente: Cliente&lt;br&gt;tipo: TipoConta&lt;br&gt;saldo: number&lt;br&gt;status: boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="46" vertex="1">
+                    <mxGeometry y="30" width="185" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="54" value="ContaCorrente" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="390" y="700" width="220" height="180" as="geometry">
+                        <mxRectangle x="375" y="535" width="170" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="55" value="chequeEspecial: number" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="54" vertex="1">
+                    <mxGeometry y="30" width="220" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="56" value="constructor()" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="54" vertex="1">
+                    <mxGeometry y="100" width="220" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="48" value="constructor()&lt;br&gt;depositar(valor: number): void&lt;br&gt;sacar(valor: number): void&lt;br&gt;verificarSaldo():number&lt;br&gt;transferir(destino: ContaBancaria, valor: number): void&lt;br&gt;" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="500" width="185" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="57" value="Gerente" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="380" y="70" width="445" height="220" as="geometry">
+                        <mxRectangle x="375" y="535" width="170" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="58" value="nomeCompleto: string&lt;br&gt;id: string&lt;br&gt;clientes: Cliente[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="57" vertex="1">
+                    <mxGeometry y="30" width="445" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="59" value="constructor()&lt;br&gt;adicionarClientes(cliente: Cliente): void&lt;br&gt;removerCliente(cliente:Cliente):void&amp;nbsp;&lt;br&gt;abrirConta(cliente: Cliente, tipoConta:string): void&lt;br&gt;fecharConta(cliente:Cliente, conta:ContaBancaria, novoTipo: string): void&lt;br&gt;mudarTipoConta(cliente: Cliente, conta: ContaBancaria , novoTipo:string): void&lt;br&gt;" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="57" vertex="1">
+                    <mxGeometry y="100" width="445" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="60" value="ContaPoupança" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="150" y="700" width="220" height="180" as="geometry">
+                        <mxRectangle x="375" y="535" width="170" height="30" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="61" value="taxaJuros: number&amp;nbsp;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="60" vertex="1">
+                    <mxGeometry y="30" width="220" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="62" value="constructor()&lt;br&gt;calcularTaxa():number&lt;br&gt;transferir(destino: ContaBancaria, valor: number): void" style="text;strokeColor=default;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="60" vertex="1">
+                    <mxGeometry y="100" width="220" height="80" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
