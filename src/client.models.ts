@@ -2,13 +2,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 export class Client {
-    id: number;
+    id: string;
     nomeCompleto: string;
     endereco: string;
-    telefone: number;
+    telefone: string;
     renda: number;
 
-    constructor(id:number,nomeCompleto:string,endereco:string,telefone:number,renda:number){
+    constructor(id:string,nomeCompleto:string,endereco:string,telefone:string,renda:number){
         this.id = uuidv4(),
         this.nomeCompleto = nomeCompleto,
         this.endereco = endereco,

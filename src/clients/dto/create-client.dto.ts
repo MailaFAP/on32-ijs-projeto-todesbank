@@ -1,7 +1,7 @@
 export class CreateClientDto {
     id: string;
-    nome: string;
-    endereco: string;
-    telefone: string;
-    renda: number;
+    name: string;
+    adress: string;
+    fone: string;
+    income: number;
   }

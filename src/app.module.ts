@@ -6,7 +6,7 @@ import { AccountsModule } from './accounts/accounts.module';
 import { ManagersModule } from './managers/managers.module';
 
 @Module({
-  imports: [ClientsModule, ClientsModule, AccountsModule, ManagersModule],
+  imports: [ClientsModule, AccountsModule, ManagersModule],
   controllers: [AppController],
   providers: [AppService],
 })
