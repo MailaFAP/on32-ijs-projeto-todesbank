@@ -8,27 +8,27 @@ export class ManagersController {
   constructor(private readonly managersService: ManagersService) {}
 
   @Post()
-  create(@Body() createManagerDto: CreateManagerDto) {
-    return this.managersService.create(createManagerDto);
+  createNewManager(@Body() createManagerDto: CreateManagerDto) {
+    return this.managersService.createNewManager(createManagerDto);
   }
 
   @Get()
-  findAll() {
-    return this.managersService.findAll();
+  findAllManager() {
+    return this.managersService.findAllManager();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.managersService.findOne(+id);
+  findManagerById(@Param('id') id: string) {
+    return this.managersService.findManagerById(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateManagerDto: UpdateManagerDto) {
-    return this.managersService.update(+id, updateManagerDto);
+    return this.managersService.update(id, updateManagerDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.managersService.remove(+id);
+  removeManager(@Param('id') id: string) {
+    return this.managersService.removeManager(id);
   }
 }
