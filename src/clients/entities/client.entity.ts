@@ -9,4 +9,14 @@ export class Client {
     income: number;
     account: Account[];
     manager: Manager;
+
+    constructor(id: string, name: string, adress: string, fone: string, income: number, account: Account, manager: Manager) {
+        this.id = id;
+        this.name = name;
+        this.adress = adress;
+        this.fone = fone;
+        this.income = income;
+        this.account = [];
+        this.manager = manager;
+    }
 }

@@ -9,4 +9,4 @@ export class CreateClientDto {
     income: number;
     account: Account[];
     manager: Manager;
-  }
+}

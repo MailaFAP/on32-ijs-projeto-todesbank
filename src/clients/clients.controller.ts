@@ -5,30 +5,25 @@ import { UpdateClientDto } from './dto/update-client.dto';
 
 @Controller('clients')
 export class ClientsController {
-  constructor(private readonly clientsService: ClientsService) {}
+    constructor(private readonly clientsService: ClientsService) { }
 
-  @Post()
-  create(@Body() createClientDto: CreateClientDto) {
-    return this.clientsService.create(createClientDto);
-  }
+    @Post()
+    create(@Body() createClientDto: CreateClientDto) {
+        return this.clientsService.create(createClientDto);
+    }
 
-  @Get('all')
-  findAll() {
-    return this.clientsService.findAll();
-  }
+    @Get('all')
+    findAll() {
+        return this.clientsService.findAll();
+    }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clientsService.findOne(id);
-  }
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+        return this.clientsService.findOne(id);
+    }
 
-  /*@Put(':id')
-  update(@Param('id') id: string, updateClientDto: UpdateClientDto) {
-    return this.clientsService.update(id, updateClientDto);
-  }*/
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clientsService.remove(id);
-  }
+    @Delete(':id')
+    remove(@Param('id') id: string) {
+        return this.clientsService.remove(id);
+    }
 }

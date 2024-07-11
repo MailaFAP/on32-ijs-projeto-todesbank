@@ -3,4 +3,4 @@ export class UpdateClientDto {
     adress?: string;
     fone?: string;
     income?: number;
-  }
+}
