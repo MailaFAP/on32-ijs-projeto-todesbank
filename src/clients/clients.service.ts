@@ -6,7 +6,6 @@ import { Account } from 'src/accounts/entities/account.entity';
 
 @Injectable()
 export class ClientsService {
-
     private clients: Client[] = [];
 
     //CRUD
@@ -20,11 +19,11 @@ export class ClientsService {
     }
 
     findOne(id: string): Client {
-        return this.clients.find((client) => client.id === id);
+        return this.clients.find((client) => client.getId === id);
     }
   
     remove(id: string): void {
-        this.clients = this.clients.filter((client) => client.id !== id);
+        this.clients = this.clients.filter((client) => client.getId !== id);
     }
 
 
@@ -32,22 +31,22 @@ export class ClientsService {
     
 
     checkBalance(account: Account): number {
-        return account.balance;
+        return account.getBalance;
     }
 
     deposit(value: number, account: Account): void {
-        if (account.status === true) {
-            account.balance = account.balance + value
-            console.log(`Seu saldo atual é de ${account.balance}.`);
+        if (account.getStatus === true) {
+            account.setBalance = account.getBalance + value
+            console.log(`Seu saldo atual é de ${account.getBalance}.`);
         } else {
             console.log(`Operação de depósito inválida. Conta inexistente`);
         }
     }
 
     withdrawMoney(value: number, account: Account): void {
-        if (account.status === true) {
-            if (account.balance > value) {
-                account.balance = account.balance - value
+        if (account.getStatus === true) {
+            if (account.getBalance >= value) {
+                account.setBalance = account.getBalance - value;
             } else {
                 console.log(`Saldo insuficiente`);
             }
@@ -57,11 +56,11 @@ export class ClientsService {
     }
 
     transfer(valueOfTransf: number, account: Account): void {
-        let valueEnd = account.balance - valueOfTransf
-        if (account.balance > valueOfTransf) {
-            console.log(`Você não tem saldo suficiente para esta transação`);
+        if (account.getBalance >= valueOfTransf) {
+            account.setBalance = account.getBalance - valueOfTransf;
+            console.log(`Transferencia realizada com sucesso, seu novo saldo é de ${account.getBalance}.`);
         } else {
-            console.log(`Transferencia realizada com sucesso, seu novo saldo é de ${valueEnd}.`);
+            console.log(`Você não tem saldo suficiente para esta transação`);
         }
     }
 }

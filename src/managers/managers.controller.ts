@@ -2,14 +2,23 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ManagersService } from './managers.service';
 import { CreateManagerDto } from './dto/create-manager.dto';
 import { UpdateManagerDto } from './dto/update-manager.dto';
+import { Manager } from './entities/manager.entity';
 
 @Controller('managers')
 export class ManagersController {
-    constructor(private readonly managersService: ManagersService) { }
+    private managersService: ManagersService
+
+    constructor(managersService: ManagersService) {
+        this.managersService = managersService;
+     }
 
     @Post()
     createNewManager(@Body() createManagerDto: CreateManagerDto) {
-        return this.managersService.createNewManager(createManagerDto);
+        const manager = new Manager(
+            createManagerDto.getId,
+            createManagerDto.getNameManager,
+            createManagerDto.getClients)
+        return this.managersService.createNewManager(manager);
     }
 
     @Get()

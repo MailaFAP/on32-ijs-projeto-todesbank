@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+/*import { v4 as uuidv4 } from 'uuid';
 
 
 export class Client {
@@ -16,4 +16,4 @@ export class Client {
         this.renda = renda
     }
         
-}
+}*/
