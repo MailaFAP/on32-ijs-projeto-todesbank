@@ -19,48 +19,45 @@ export class ClientsService {
     }
 
     findOne(id: string): Client {
-        return this.clients.find((client) => client.getId === id);
+        return this.clients.find((client) => client.id === id);
     }
   
     remove(id: string): void {
-        this.clients = this.clients.filter((client) => client.getId !== id);
+        this.clients = this.clients.filter((client) => client.id !== id);
     }
 
 
     //MÉTODOS DO CLIENTE
     
-
-    checkBalance(account: Account): number {
-        return account.getBalance;
-    }
-
-    deposit(value: number, account: Account): void {
-        if (account.getStatus === true) {
-            account.setBalance = account.getBalance + value
-            console.log(`Seu saldo atual é de ${account.getBalance}.`);
+    openAccount(account: Account, client: Client): string {
+        if (client.income >= 500) {
+            account.typeAccount = 'CORRENTE';
+            account.status = true;
+            return `Parabéns ${client.name}, sua conta Corrente está aberta!`
         } else {
-            console.log(`Operação de depósito inválida. Conta inexistente`);
+            account.typeAccount = 'POUPANÇA';
+            account.status = true;
+            return `Parabéns ${client.name}, sua conta Poupança está aberta!`
         }
     }
 
-    withdrawMoney(value: number, account: Account): void {
-        if (account.getStatus === true) {
-            if (account.getBalance >= value) {
-                account.setBalance = account.getBalance - value;
-            } else {
-                console.log(`Saldo insuficiente`);
-            }
+    closeAccount(account: Account): string {
+        if (account.balance > 0) {
+            return `Sua conta não está zerada, por isso não pode fechar esta conta`;
+        } else if (account.balance < 0) {
+            return `Sua conta está negativada. Não pode encerrar a conta com débito em aberto`;
         } else {
-            console.log(`Operação de saque inválida. Conta inexistete `);
+            account.status = false
+            return `Sua conta foi fechada com sucesso`;
         }
     }
 
-    transfer(valueOfTransf: number, account: Account): void {
-        if (account.getBalance >= valueOfTransf) {
-            account.setBalance = account.getBalance - valueOfTransf;
-            console.log(`Transferencia realizada com sucesso, seu novo saldo é de ${account.getBalance}.`);
+    changeTypeAccount(account: Account): string{
+        if (account.typeAccount === 'CORRENTE') {
+            return account.typeAccount = 'POUPANÇA';
         } else {
-            console.log(`Você não tem saldo suficiente para esta transação`);
+            return account.typeAccount = 'CORRENTE';
         }
     }
+
 }

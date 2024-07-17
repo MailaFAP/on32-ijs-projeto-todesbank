@@ -21,7 +21,7 @@ export class ManagersService {
     }
 
     findManagerById(id: string) {
-        return this.managers.find((manager) => manager.getId === id);
+        return this.managers.find((manager) => manager.id === id);
     }
 
     update(id: string, updateManagerDto: UpdateManagerDto) {
@@ -29,45 +29,48 @@ export class ManagersService {
     }
 
     removeManager(id: string) {
-        return this.managers.filter((manager) => manager.getId !== id);
+        return this.managers.filter((manager) => manager.id !== id);
     }
 
 
     //MÉTODOS DO GERENTE
-    addClientToManager(client: Client): Client {
+    addClientToManager(client: Client): void {
         this.clients.push(client);
-        return client;
     }
 
-    removedClientToManager(id: string, client: Client) {
-        this.clients.filter((client) => client.getId !== id);
+    removedClientToManager(id: string, client:Client): Client {
+        this.clients.filter((client) => client.id !== id);
         return client;
     }
 
     openAccount(account: Account, client: Client): string {
-        if (client.getIncome >= 500) {
-            return account.setTypeAccount = 'CORRENTE';
+        if (client.income >= 500) {
+            account.typeAccount = 'CORRENTE';
+            account.status = true;
+            return `Parabéns ${client.name}, sua conta Corrente está aberta!`
         } else {
-            return account.setTypeAccount = 'POUPANÇA';
+            account.typeAccount = 'POUPANÇA';
+            account.status = true;
+            return `Parabéns ${client.name}, sua conta Poupança está aberta!`
         }
     }
 
     closeAccount(account: Account): string {
-        if (account.getBalance > 0) {
+        if (account.balance > 0) {
             return `Sua conta não está zerada, por isso não pode fechar esta conta`;
-        } else if (account.getBalance < 0) {
+        } else if (account.balance < 0) {
             return `Sua conta está negativada. Não pode encerrar a conta com débito em aberto`;
         } else {
-            account.setStatus = false
+            account.status = false
             return `Sua conta foi fechada com sucesso`;
         }
     }
 
     changeTypeAccount(account: Account): string{
-        if (account.getTypeAccount === 'CORRENTE') {
-            return account.setTypeAccount = 'POUPANÇA';
+        if (account.typeAccount === 'CORRENTE') {
+            return account.typeAccount = 'POUPANÇA';
         } else {
-            return account.setTypeAccount = 'CORRENTE';
+            return account.typeAccount = 'CORRENTE';
         }
     }
 }

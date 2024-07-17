@@ -1,46 +1,52 @@
 import { Client } from "src/clients/entities/client.entity";
 
 export class CreateAccountDto {
-    private client: Client;
-    private typeAccount: 'CORRENTE' | 'POUPANÇA';
-    private balance: number;
-    private status: boolean;
+    private _idAccount: string;
+    private _client: Client;
+    private _typeAccount: 'CORRENTE'|'POUPANÇA';
+    private _balance: number;
+    private _status: boolean;
 
-    constructor(client: Client, typeAccount: 'CORRENTE' | 'POUPANÇA', balance: number, status: boolean) {
-        this.client = client;
-        this.typeAccount = typeAccount;
-        this.balance = balance;
-        this.status = status;
+    constructor(idAccount: string, client: Client, typeAccount: 'CORRENTE'|'POUPANÇA', balance: number, status: boolean) {
+        this._idAccount = idAccount;
+        this._client = client;
+        this._typeAccount = typeAccount;
+        this._balance = balance;
+        this._status = status;
     }
 
-    public get getClient(): Client {
-        return this.client;
+    public get idAccount(): string{
+        return this._idAccount;
     }
 
-
-    public get getTypeAccount(): string {
-        return this.typeAccount;
+    public get client(): Client {
+        return this._client;
     }
 
-    public set setTypeAccount(typeAccount: 'CORRENTE' | 'POUPANÇA') {
-        this.typeAccount = typeAccount;
+    
+    public get typeAccount(): string {
+        return this._typeAccount;
     }
 
+    public set typeAccount(typeAccount:'CORRENTE'|'POUPANÇA'){
+        this._typeAccount = typeAccount;
+    }
+    
 
-    public get getBalance(): number {
-        return this.balance;
+    public get balance(): number {
+        return this._balance;
     }
 
-    public set setBalance(balance: number) {
-        this.balance = balance;
+    public set balance(balance: number){
+        this._balance = balance;
     }
 
-    public get getStatus(): boolean {
-        return this.status;
+    public get status(): boolean {
+        return this._status;
     }
 
-    public set setStatus(status: boolean) {
-        this.status = status;
+    public set status(status: boolean){
+        this._status = status;
     }
 }
 

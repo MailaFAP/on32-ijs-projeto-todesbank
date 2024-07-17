@@ -1,34 +1,33 @@
 import { Client } from "src/clients/entities/client.entity";
 
 export class CreateManagerDto {
-    private id: string;
-    private nameManager: string;
-    private clients: Client[];
-   
-    constructor(id:string, nameManager:string, clients: Client[]){
-        this.id = id;
-        this.nameManager = nameManager;
-        this.clients = clients;
+    private _id: string;
+    private _nameManager: string;
+    private _clients: Client[];
+
+    constructor(id: string, nameManager: string, clients: Client[]) {
+        this._id = id;
+        this._nameManager = nameManager;
+        this._clients = clients;
     }
 
-    public get getId(): string {
-        return this.id;
-    }
-    public set setId(value: string) {
-        this.id = value;
+    public get id(): string {
+        return this._id;
     }
 
-    public get getNameManager(): string {
-        return this.nameManager;
-    }
-    public set setNameManager(value: string) {
-        this.nameManager = value;
+    public get nameManager(): string {
+        return this._nameManager;
     }
 
-    public get getClients(): Client[] {
-        return this.clients;
+    public get clients(): Client[] {
+        return this._clients;
     }
-    public set setClients(value: Client[]) {
-        this.clients = value;
+
+    public set nameManager(nameManager: string) {
+        this._nameManager = nameManager;
+    }
+
+    public set clients(clients: Client[]) {
+        this._clients = clients;
     }
 }

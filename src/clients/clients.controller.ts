@@ -3,6 +3,7 @@ import { ClientsService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
 import { UpdateClientDto } from './dto/update-client.dto';
 import { Client } from './entities/client.entity';
+import { AccountsService } from 'src/accounts/accounts.service';
 
 @Controller('clients')
 export class ClientsController {
@@ -14,14 +15,16 @@ export class ClientsController {
 
     @Post()
     create(@Body() createClientDto: CreateClientDto) {
+        console.log(createClientDto.adress)
         const client = new Client(
-            createClientDto.getId,
-            createClientDto.getName,
-            createClientDto.getAdress,
-            createClientDto.getFone,
-            createClientDto.getIcome,
-            createClientDto.getAccount,
-            createClientDto.getManager)
+            createClientDto.id,
+            createClientDto.name,
+            createClientDto.adress,
+            createClientDto.fone,
+            createClientDto.income,
+            createClientDto.account,
+            createClientDto.manager)
+        console.log(client)
         return this.clientsService.create(client);
     }
 
@@ -40,33 +43,6 @@ export class ClientsController {
         return this.clientsService.remove(id);
     }
 
-    @Get(':id/:idAccount/balance')
-    checkBalance(@Param('id')id: string, @Param('idAccount') idAccount: string) {
-        const client = this.clientsService.findOne(id);
-        const account = client.getAccount.find((account) => account.getIdAccount === idAccount)
-        return this.clientsService.checkBalance(account);
-    }
-
-    @Put(':id/idAccount')
-    deposit(@Param('id')id: string, @Param('idAccount') idAccount: string, @Body('value')value: number){
-        const client = this.clientsService.findOne(id);
-        const account = client.getAccount.find((account) => account.getIdAccount === idAccount)
-        return this.clientsService.deposit(value, account);
-    }
-
-    @Put(':id/idAccount')
-    withdrawMoney(@Param('id')id: string, @Param('idAccount') idAccount: string, @Body('value')value: number){
-        const client = this.clientsService.findOne(id);
-        const account = client.getAccount.find((account) => account.getIdAccount === idAccount)
-        return this.clientsService.withdrawMoney(value, account);
-    }
-
-    @Put(':id/idAccount')
-    transfer(@Param('id')id: string, @Param('idAccount') idAccount: string, @Body('value')value: number){
-        const client = this.clientsService.findOne(id);
-        const account = client.getAccount.find((account) => account.getIdAccount === idAccount)
-        return this.clientsService.transfer(value, account);
-    }
-
+ 
 
 }

@@ -15,9 +15,9 @@ export class ManagersController {
     @Post()
     createNewManager(@Body() createManagerDto: CreateManagerDto) {
         const manager = new Manager(
-            createManagerDto.getId,
-            createManagerDto.getNameManager,
-            createManagerDto.getClients)
+            createManagerDto.id,
+            createManagerDto.nameManager,
+            createManagerDto.clients)
         return this.managersService.createNewManager(manager);
     }
 
@@ -40,4 +40,5 @@ export class ManagersController {
     removeManager(@Param('id') id: string) {
         return this.managersService.removeManager(id);
     }
+
 }

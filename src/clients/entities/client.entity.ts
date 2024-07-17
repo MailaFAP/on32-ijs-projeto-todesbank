@@ -2,73 +2,73 @@ import { Account } from "src/accounts/entities/account.entity";
 import { Manager } from "src/managers/entities/manager.entity";
 
 export class Client {
-    private id: string;
-    private name: string;
-    private adress: string;
-    private fone: string;
-    private income: number;
-    private account: Account[];
-    private manager: Manager;
+    private _id: string;
+    private _name: string;
+    private _adress: string;
+    private _fone: string;
+    private _income: number;
+    private _account: Account[];
+    private _manager: Manager;
 
     constructor(id: string, name: string, adress: string, fone: string, income: number, account: Account[], manager: Manager) {
-        this.id = id;
-        this.name = name;
-        this.adress = adress;
-        this.fone = fone;
-        this.income = income;
-        this.account = account;
-        this.manager = manager;
+        this._id = id;
+        this._name = name;
+        this._adress = adress;
+        this._fone = fone;
+        this._income = income;
+        this._account = account;
+        this._manager = manager;
     }
 
-    public get getId(): string{
-        return this.id;
+    public get id(): string{
+        return this._id;
     }
 
-    public get getName(): string{
-        return this.name;
+    public get name(): string{
+        return this._name;
     }
 
-    public get getAdress(): string{
-        return this.adress;
+    public get adress(): string{
+        return this._adress;
     }
 
-    public get getFone(): string{
-        return this.fone;
+    public get fone(): string{
+        return this._fone;
     }
 
-    public get getIncome(): number{
-        return this.income;
+    public get income(): number{
+        return this._income;
     }
 
-    public get getAccount(): Account[]{
-        return this.account;
+    public get account(): Account[]{
+        return this._account;
     }
 
-    public get getManager(): Manager{
-        return this.manager;
+    public get manager(): Manager{
+        return this._manager;
     }
 
-    public set setName(name: string){
-        this.name = name;
+    public set name(name: string){
+        this._name = name;
     }
 
-    public set setAdress(adress: string){
-        this.adress = adress;
+    public set adress(adress: string){
+        this._adress = adress;
     }
 
-    public set setFone(fone: string){
-        this.fone = fone;
+    public set fone(fone: string){
+        this._fone = fone;
     }
 
-    public set setIncome(income: number){
-        this.income = income;
+    public set income(income: number){
+        this._income = income;
     }
 
-    public set setAccount(account: Account[]){
-        this.account = account;
+    public set account(account: Account[]){
+        this._account = account;
     }
 
-    public set setManager(manager: Manager){
-        this.manager = manager;
+    public set manager(manager: Manager){
+        this._manager = manager;
     }
 }
