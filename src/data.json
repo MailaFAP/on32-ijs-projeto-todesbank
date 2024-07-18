@@ -25,24 +25,20 @@
             "manager": null
         }
     ],
-    
     [
         {
             "nameManager": "Roberto de Andrade",
             "clients": []
         },
-    
         {
             "nameManager": "Adriana Pereira",
             "clients": []
         },
-    
         {
             "nameManager": "Soraia Stravock",
             "clients": []
         }
     ],
-
     [
         {
             "client": "Antonio da SIlva",
@@ -50,18 +46,17 @@
             "balance": 0,
             "status": "true"
         },
-        
         {
             "client": "Maria de Oliveira",
             "typeAccount": "CORRENTE",
             "balance": 0,
             "status": "true"
-        }
-
+        },
         {
             "client": "Solange Quina",
             "typeAccount": "POUPANÇA",
             "balance": 0,
             "status": "true"
         }
-] 
+    ]
+]
