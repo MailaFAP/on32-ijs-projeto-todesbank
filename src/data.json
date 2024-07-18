@@ -49,6 +49,19 @@
             "typeAccount": "CORRENTE",
             "balance": 0,
             "status": "true"
+        },
+        
+        {
+            "client": "Maria de Oliveira",
+            "typeAccount": "CORRENTE",
+            "balance": 0,
+            "status": "true"
         }
-    ]
+
+        {
+            "client": "Solange Quina",
+            "typeAccount": "POUPANÇA",
+            "balance": 0,
+            "status": "true"
+        }
 ] 

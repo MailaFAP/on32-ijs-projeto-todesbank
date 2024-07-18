@@ -5,7 +5,7 @@ import { UpdateClientDto } from './dto/update-client.dto';
 import { Client } from './entities/client.entity';
 import { AccountsService } from 'src/accounts/accounts.service';
 
-@Controller(':clients')
+@Controller('clients')
 export class ClientsController {
     private readonly clientsService: ClientsService
 
@@ -22,11 +22,10 @@ export class ClientsController {
             createClientDto.income,
             createClientDto.account,
             createClientDto.manager)
-        const xxx = this.clientsService.create(client);
-        return xxx;
+        return this.clientsService.create(client);
     }
 
-    @Get(':all')
+    @Get()
     findAll() {
         return this.clientsService.findAll();
     }

@@ -14,7 +14,6 @@ export class Account {
         this._typeAccount = typeAccount;
         this._balance = 0;
         this._status = true;
-        console.log(this.idAccount)
     }
 
     public get idAccount(): string{
