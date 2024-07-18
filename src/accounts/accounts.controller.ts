@@ -5,7 +5,7 @@ import { UpdateAccountDto } from './dto/update-account.dto';
 import { Account } from './entities/account.entity';
 import { ClientsService } from 'src/clients/clients.service';
 
-@Controller('accounts')
+@Controller(':accounts')
 export class AccountsController {
 	private readonly accountsService: AccountsService
 	private readonly clientsService: ClientsService
@@ -17,16 +17,17 @@ export class AccountsController {
 
 	@Post()
 	createAccount(@Body() createAccountDto: CreateAccountDto) {
+		console.log(createAccountDto)
 		const account = new Account(
-			createAccountDto.idAccount,
 			createAccountDto.client, 
 			createAccountDto.typeAccount as 'CORRENTE' | 'POUPANÇA',
 			createAccountDto.balance, 
 			createAccountDto.status)
+		console.log(account)
 		return this.accountsService.createAccount(account);
 	}
 
-	@Get()
+	@Get(':all')
 	findAllAccount() {
 		return this.accountsService.findAllAccount();
 	}

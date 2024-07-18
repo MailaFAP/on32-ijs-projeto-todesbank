@@ -1,22 +1,16 @@
 import { Client } from "src/clients/entities/client.entity";
 
 export class CreateAccountDto {
-    private _idAccount: string;
     private _client: Client;
     private _typeAccount: 'CORRENTE'|'POUPANÇA';
     private _balance: number;
     private _status: boolean;
 
-    constructor(idAccount: string, client: Client, typeAccount: 'CORRENTE'|'POUPANÇA', balance: number, status: boolean) {
-        this._idAccount = idAccount;
+    constructor(client: Client, typeAccount: 'CORRENTE'|'POUPANÇA', balance: number, status: boolean) {
         this._client = client;
         this._typeAccount = typeAccount;
         this._balance = balance;
         this._status = status;
-    }
-
-    public get idAccount(): string{
-        return this._idAccount;
     }
 
     public get client(): Client {

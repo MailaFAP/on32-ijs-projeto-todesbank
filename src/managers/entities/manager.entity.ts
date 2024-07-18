@@ -1,12 +1,13 @@
 import { Client } from "src/clients/entities/client.entity";
+import { v4 as uuidv4 } from 'uuid';
 
 export class Manager {
     private _id: string;
     private _nameManager: string;
     private _clients: Client[];
 
-    constructor(id: string, nameManager: string, clients: Client[]) {
-        this._id = id;
+    constructor(nameManager: string, clients: Client[]) {
+        this._id = uuidv4();
         this._nameManager = nameManager;
         this._clients = clients;
     }

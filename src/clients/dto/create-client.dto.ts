@@ -1,8 +1,8 @@
 import { Account } from "src/accounts/entities/account.entity";
 import { Manager } from "src/managers/entities/manager.entity";
 
+
 export class CreateClientDto {
-    private _id: string;
     private _name: string;
     private _adress: string;
     private _fone: string;
@@ -10,18 +10,13 @@ export class CreateClientDto {
     private _account: Account[];
     private _manager: Manager;
 
-    constructor(id:string, name:string, adress:string, fone:string, income:number, account:Account[], manager:Manager) {
-        this._id = id;
+    constructor(name:string, adress:string, fone:string, income:number, account:Account[], manager:Manager) {
         this._name = name;
         this._adress = adress;
         this._fone = fone;
         this._income = income;
         this._account = account;
         this._manager = manager;
-    }
-
-    public get id(): string{
-        return this._id;
     }
 
     public get name(): string{

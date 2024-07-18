@@ -5,7 +5,7 @@ import { UpdateClientDto } from './dto/update-client.dto';
 import { Client } from './entities/client.entity';
 import { AccountsService } from 'src/accounts/accounts.service';
 
-@Controller('clients')
+@Controller(':clients')
 export class ClientsController {
     private readonly clientsService: ClientsService
 
@@ -15,20 +15,18 @@ export class ClientsController {
 
     @Post()
     create(@Body() createClientDto: CreateClientDto) {
-        console.log(createClientDto.adress)
         const client = new Client(
-            createClientDto.id,
             createClientDto.name,
             createClientDto.adress,
             createClientDto.fone,
             createClientDto.income,
             createClientDto.account,
             createClientDto.manager)
-        console.log(client)
-        return this.clientsService.create(client);
+        const xxx = this.clientsService.create(client);
+        return xxx;
     }
 
-    @Get('all')
+    @Get(':all')
     findAll() {
         return this.clientsService.findAll();
     }

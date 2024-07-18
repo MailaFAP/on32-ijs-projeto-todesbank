@@ -1,18 +1,12 @@
 import { Client } from "src/clients/entities/client.entity";
 
 export class CreateManagerDto {
-    private _id: string;
     private _nameManager: string;
     private _clients: Client[];
 
-    constructor(id: string, nameManager: string, clients: Client[]) {
-        this._id = id;
+    constructor(nameManager: string, clients: Client[]) {
         this._nameManager = nameManager;
         this._clients = clients;
-    }
-
-    public get id(): string {
-        return this._id;
     }
 
     public get nameManager(): string {

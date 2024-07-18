@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateClientDto } from './dto/create-client.dto';
-import { UpdateClientDto } from './dto/update-client.dto';
 import { Client } from './entities/client.entity';
 import { Account } from 'src/accounts/entities/account.entity';
 
@@ -22,8 +20,8 @@ export class ClientsService {
         return this.clients.find((client) => client.id === id);
     }
   
-    remove(id: string): void {
-        this.clients = this.clients.filter((client) => client.id !== id);
+    remove(id: string): Client[] {
+        return this.clients = this.clients.filter((client) => client.id !== id);
     }
 
 

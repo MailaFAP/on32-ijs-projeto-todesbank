@@ -1,5 +1,6 @@
 import { Account } from "src/accounts/entities/account.entity";
 import { Manager } from "src/managers/entities/manager.entity";
+import { v4 as uuidv4 } from 'uuid';
 
 export class Client {
     private _id: string;
@@ -10,8 +11,8 @@ export class Client {
     private _account: Account[];
     private _manager: Manager;
 
-    constructor(id: string, name: string, adress: string, fone: string, income: number, account: Account[], manager: Manager) {
-        this._id = id;
+    constructor(name: string, adress: string, fone: string, income: number, account: Account[], manager: Manager) {
+        this._id = uuidv4();
         this._name = name;
         this._adress = adress;
         this._fone = fone;

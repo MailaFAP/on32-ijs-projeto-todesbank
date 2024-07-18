@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateAccountDto } from './dto/create-account.dto';
 import { UpdateAccountDto } from './dto/update-account.dto';
 import { Account } from './entities/account.entity';
 
@@ -7,7 +6,8 @@ import { Account } from './entities/account.entity';
 export class AccountsService {
     private accounts: Account[] = [];
 
-    createAccount(account: Account) {
+    //CRUD Account
+    createAccount(account: Account): Account {
         this.accounts.push(account);
         return account;
     }
@@ -24,9 +24,11 @@ export class AccountsService {
         return `This action updates a #${id} account`;
     }
 
-    removeAccount(id: string):void {
-        this.accounts = this.accounts.filter((account) => account.idAccount !== id);
+    removeAccount(id: string): Account[] {
+        return this.accounts = this.accounts.filter((account) => account.idAccount !== id);
     }
+
+    //Método Account
 
     checkBalance(account: Account): number {
         return account.balance;

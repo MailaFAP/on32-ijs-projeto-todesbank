@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateManagerDto } from './dto/create-manager.dto';
 import { UpdateManagerDto } from './dto/update-manager.dto';
 import { Manager } from './entities/manager.entity';
 import { Client } from 'src/clients/entities/client.entity';
@@ -16,11 +15,11 @@ export class ManagersService {
         return manager;
     }
 
-    findAllManager() {
+    findAllManager(): Manager[] {
         return [...this.managers];
     }
 
-    findManagerById(id: string) {
+    findManagerById(id: string): Manager {
         return this.managers.find((manager) => manager.id === id);
     }
 
@@ -28,7 +27,7 @@ export class ManagersService {
         return `This action updates a #${id} manager`;
     }
 
-    removeManager(id: string) {
+    removeManager(id: string): Manager[] {
         return this.managers.filter((manager) => manager.id !== id);
     }
 

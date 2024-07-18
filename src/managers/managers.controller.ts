@@ -4,7 +4,7 @@ import { CreateManagerDto } from './dto/create-manager.dto';
 import { UpdateManagerDto } from './dto/update-manager.dto';
 import { Manager } from './entities/manager.entity';
 
-@Controller('managers')
+@Controller(':managers')
 export class ManagersController {
     private managersService: ManagersService
 
@@ -15,13 +15,12 @@ export class ManagersController {
     @Post()
     createNewManager(@Body() createManagerDto: CreateManagerDto) {
         const manager = new Manager(
-            createManagerDto.id,
             createManagerDto.nameManager,
             createManagerDto.clients)
         return this.managersService.createNewManager(manager);
     }
 
-    @Get()
+    @Get(':all')
     findAllManager() {
         return this.managersService.findAllManager();
     }
