@@ -1,5 +1,5 @@
-import { Account } from "src/accounts/entities/account.entity";
-import { Manager } from "src/managers/entities/manager.entity";
+import { Account } from '../../../domain/entities/account.entity';
+import { Manager } from '../../../domain/entities/manager.entity';
 
 
 export class CreateClientDto {

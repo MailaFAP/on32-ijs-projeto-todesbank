@@ -1,4 +1,4 @@
-import { Client } from "src/clients/entities/client.entity";
+import { Client } from '../entities/client.entity';
 import { v4 as uuidv4 } from 'uuid';
 
 export class Account {

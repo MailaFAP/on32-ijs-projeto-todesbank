@@ -1,47 +1,32 @@
 import { Injectable } from '@nestjs/common';
-import { UpdateManagerDto } from './dto/update-manager.dto';
-import { Manager } from './entities/manager.entity';
-import { Client } from 'src/clients/entities/client.entity';
-import { Account } from 'src/accounts/entities/account.entity';
+import { Client } from '../entities/client.entity';
+import { Account } from '../entities/account.entity';
 
 @Injectable()
-export class ManagersService {
-    private managers: Manager[] = [];
+export class ClientsService {
     private clients: Client[] = [];
 
     //CRUD
-    createNewManager(manager: Manager): Manager {
-        this.managers.push(manager);
-        return manager;
-    }
-
-    findAllManager(): Manager[] {
-        return [...this.managers];
-    }
-
-    findManagerById(id: string): Manager {
-        return this.managers.find((manager) => manager.id === id);
-    }
-
-    update(id: string, updateManagerDto: UpdateManagerDto) {
-        return `This action updates a #${id} manager`;
-    }
-
-    removeManager(id: string): Manager[] {
-        return this.managers.filter((manager) => manager.id !== id);
-    }
-
-
-    //MÉTODOS DO GERENTE
-    addClientToManager(client: Client): void {
+    create(client: Client): Client {
         this.clients.push(client);
-    }
-
-    removedClientToManager(id: string, client:Client): Client {
-        this.clients.filter((client) => client.id !== id);
         return client;
     }
 
+    findAll(): Client[] {
+        return [...this.clients];
+    }
+
+    findOne(id: string): Client {
+        return this.clients.find((client) => client.id === id);
+    }
+  
+    remove(id: string): Client[] {
+        return this.clients = this.clients.filter((client) => client.id !== id);
+    }
+
+
+    //MÉTODOS DO CLIENTE
+    
     openAccount(account: Account, client: Client): string {
         if (client.income >= 500) {
             account.typeAccount = 'CORRENTE';
@@ -72,4 +57,5 @@ export class ManagersService {
             return account.typeAccount = 'CORRENTE';
         }
     }
+
 }

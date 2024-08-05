@@ -1,9 +1,9 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
-import { AccountsService } from './accounts.service';
-import { CreateAccountDto } from './dto/create-account.dto';
-import { UpdateAccountDto } from './dto/update-account.dto';
-import { Account } from './entities/account.entity';
-import { ClientsService } from 'src/clients/clients.service';
+import { AccountsService } from '../../domain/services/accounts.service';
+import { CreateAccountDto } from '../../application/dtos/account/create-account.dto';
+import { UpdateAccountDto } from '../../application/dtos/account/update-account.dto';
+import { Account } from '../../domain/entities/account.entity';
+import { ClientsService } from '../../domain/services/clients.service';
 
 @Controller('accounts')
 export class AccountsController {

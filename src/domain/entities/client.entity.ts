@@ -1,5 +1,5 @@
-import { Account } from "src/accounts/entities/account.entity";
-import { Manager } from "src/managers/entities/manager.entity";
+import { Account } from '../entities/account.entity';
+import { Manager } from '../entities/manager.entity';
 import { v4 as uuidv4 } from 'uuid';
 
 export class Client {

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { UpdateAccountDto } from './dto/update-account.dto';
-import { Account } from './entities/account.entity';
+import { UpdateAccountDto } from '../../application/dtos/account/update-account.dto';
+import { Account } from '../entities/account.entity';
 
 @Injectable()
 export class AccountsService {

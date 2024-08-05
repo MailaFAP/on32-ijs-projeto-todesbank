@@ -1,4 +1,4 @@
-import { Client } from "src/clients/entities/client.entity";
+import { Client } from "src/domain/entities/client.entity";
 
 export class CreateManagerDto {
     private _nameManager: string;
