@@ -3,10 +3,11 @@ import { ClientsService } from './services/clients.service';
 import { AccountsModule } from './models/accounts.module';
 import { ClientsModule } from './models/clients.module';
 import { ManagersModule } from './models/managers.module';
+import { AccountsService } from './services/accounts.service';
+import { ManagersService } from './services/managers.service';
 
 @Module({
-  imports: [AccountsModule, ClientsModule, ManagersModule],
-  providers: [ClientsService],
-  exports: [ClientsService]
+  providers: [ClientsService, AccountsService, ManagersService],
+  exports: [ClientsService, AccountsService, ManagersService]
 })
 export class DomainModule {}
