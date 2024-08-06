@@ -1,4 +1,4 @@
-import { Account } from '../entities/account.entity';
+import { Account } from './account/currentAccount.entity';
 import { Manager } from '../entities/manager.entity';
 import { v4 as uuidv4 } from 'uuid';
 

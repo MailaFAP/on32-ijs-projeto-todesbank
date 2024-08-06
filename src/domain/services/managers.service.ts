@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { UpdateManagerDto } from '../../application/dtos/manager/update-manager.dto';
 import { Manager } from '../entities/manager.entity';
 import { Client } from '../entities/client.entity';
-import { Account } from '../entities/account.entity';
+import { Account } from '../entities/account/currentAccount.entity';
 
 @Injectable()
 export class ManagersService {

@@ -1,12 +1,13 @@
 import { Client } from "src/domain/entities/client.entity";
+import { AccountType } from "src/domain/enums/type.enum";
 
 export class CreateAccountDto {
     private _client: Client;
-    private _typeAccount: 'CORRENTE'|'POUPANÇA';
+    private _typeAccount: AccountType;
     private _balance: number;
     private _status: boolean;
 
-    constructor(client: Client, typeAccount: 'CORRENTE'|'POUPANÇA', balance: number, status: boolean) {
+    constructor(client: Client, typeAccount: AccountType, balance: number, status: boolean) {
         this._client = client;
         this._typeAccount = typeAccount;
         this._balance = balance;
@@ -22,7 +23,7 @@ export class CreateAccountDto {
         return this._typeAccount;
     }
 
-    public set typeAccount(typeAccount:'CORRENTE'|'POUPANÇA'){
+    public set typeAccount(typeAccount: AccountType){
         this._typeAccount = typeAccount;
     }
     

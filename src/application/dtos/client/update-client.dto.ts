@@ -1,4 +1,4 @@
-import { Account } from '../../../domain/entities/account.entity';
+import { Account } from '../../../domain/entities/account/currentAccount.entity';
 import { Manager } from '../../../domain/entities/manager.entity';
 
 export class UpdateClientDto {
