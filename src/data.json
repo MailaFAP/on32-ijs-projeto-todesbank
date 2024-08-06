@@ -1,0 +1,62 @@
+[
+    [
+        {
+            "name": "Antonio da SIlva",
+            "adress": "Rua das Pitangueiras, 1156",
+            "fone": "5649-8523",
+            "income": "500",
+            "account": [],
+            "manager": null
+        },
+        {
+            "name": "Maria de Oliveira",
+            "adress": "Rua Quitauna, 352",
+            "fone": "5692-8571",
+            "income": "10.000",
+            "account": [],
+            "manager": null
+        },
+        {
+            "name": "Solange Quina",
+            "adress": "Av. das Orquideas, 32",
+            "fone": "6524-8573",
+            "income": "1000",
+            "account": [],
+            "manager": null
+        }
+    ],
+    [
+        {
+            "nameManager": "Roberto de Andrade",
+            "clients": []
+        },
+        {
+            "nameManager": "Adriana Pereira",
+            "clients": []
+        },
+        {
+            "nameManager": "Soraia Stravock",
+            "clients": []
+        }
+    ],
+    [
+        {
+            "client": "Antonio da SIlva",
+            "typeAccount": "CORRENTE",
+            "balance": 0,
+            "status": "true"
+        },
+        {
+            "client": "Maria de Oliveira",
+            "typeAccount": "CORRENTE",
+            "balance": 0,
+            "status": "true"
+        },
+        {
+            "client": "Solange Quina",
+            "typeAccount": "POUPANÇA",
+            "balance": 0,
+            "status": "true"
+        }
+    ]
+]
