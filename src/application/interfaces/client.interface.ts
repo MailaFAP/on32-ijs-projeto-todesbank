@@ -1,16 +1,16 @@
 import { Manager } from "src/domain/entities/manager.entity"
-import { BanckAccount } from "./banckAccount.interface"
+import { BankAccount } from "./banckAccount.interface"
 
-export interface Client{
+export interface IClient{
     name: string,
-    id: String,
+    idClient: String,
     address: string,
     fone: string,
     income: number,
-    accounts: BanckAccount[],
+    accounts: BankAccount[],
     manager: Manager
-    openAccount(account: BanckAccount): void
-    closeAccount(account: BanckAccount): void
-    changeTypeAccount(account: BanckAccount, newType: string): void
+    openAccount(account: BankAccount): void
+    closeAccount(account: BankAccount): void
+    changeTypeAccount(account: BankAccount, newType: string): void
 
 }

@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { UpdateManagerDto } from '../../application/dtos/manager/update-manager.dto';
 import { Manager } from '../entities/manager.entity';
 import { Client } from '../entities/client.entity';
-import { Account } from '../entities/account/currentAccount.entity';
+import { BankAccount } from 'src/application/interfaces/banckAccount.interface';
+import { AccountType } from '../enums/type.enum';
 
 @Injectable()
 export class ManagersService {
@@ -19,16 +20,16 @@ export class ManagersService {
         return [...this.managers];
     }
 
-    findManagerById(id: string): Manager {
-        return this.managers.find((manager) => manager.id === id);
+    findManagerById(idManager: string): Manager {
+        return this.managers.find((manager) => manager.idManager === idManager);
     }
 
-    update(id: string, updateManagerDto: UpdateManagerDto) {
-        return `This action updates a #${id} manager`;
+    update(idManager: string, updateManagerDto: UpdateManagerDto) {
+        return `This action updates a #${idManager} manager`;
     }
 
-    removeManager(id: string): Manager[] {
-        return this.managers.filter((manager) => manager.id !== id);
+    removeManager(idManager: string): Manager[] {
+        return this.managers.filter((manager) => manager.idManager !== idManager);
     }
 
 
@@ -37,39 +38,36 @@ export class ManagersService {
         this.clients.push(client);
     }
 
-    removedClientToManager(id: string, client:Client): Client {
-        this.clients.filter((client) => client.id !== id);
+    removedClientToManager(idClient: string, client:Client): Client {
+        this.clients.filter((client) => client.idClient !== idClient);
         return client;
     }
 
-    openAccount(account: Account, client: Client): string {
+    openAccount(account: BankAccount, client: Client): string {
         if (client.income >= 500) {
-            account.typeAccount = 'CORRENTE';
-            account.status = true;
+            account.typeAccount = AccountType.CurrentAccount;
             return `Parabéns ${client.name}, sua conta Corrente está aberta!`
         } else {
-            account.typeAccount = 'POUPANÇA';
-            account.status = true;
+            account.typeAccount = AccountType.SavingsAccount;
             return `Parabéns ${client.name}, sua conta Poupança está aberta!`
         }
     }
 
-    closeAccount(account: Account): string {
+    closeAccount(account: BankAccount): string {
         if (account.balance > 0) {
             return `Sua conta não está zerada, por isso não pode fechar esta conta`;
         } else if (account.balance < 0) {
             return `Sua conta está negativada. Não pode encerrar a conta com débito em aberto`;
         } else {
-            account.status = false
             return `Sua conta foi fechada com sucesso`;
         }
     }
 
-    changeTypeAccount(account: Account): string{
-        if (account.typeAccount === 'CORRENTE') {
-            return account.typeAccount = 'POUPANÇA';
+    changeTypeAccount(account: BankAccount): string{
+        if (account.typeAccount === AccountType.CurrentAccount) {
+            return account.typeAccount = AccountType.SavingsAccount;
         } else {
-            return account.typeAccount = 'CORRENTE';
+            return account.typeAccount = AccountType.CurrentAccount;
         }
     }
 }

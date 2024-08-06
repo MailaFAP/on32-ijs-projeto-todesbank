@@ -2,7 +2,8 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/
 import { AccountsService } from '../../domain/services/accounts.service';
 import { CreateAccountDto } from '../../application/dtos/account/create-account.dto';
 import { UpdateAccountDto } from '../../application/dtos/account/update-account.dto';
-import { Account } from '../../domain/entities/account/currentAccount.entity';
+import { CurrentAccount } from '../../domain/entities/account/currentAccount.entity';
+import { SavingsAccount } from 'src/domain/entities/account/savingsAccount.entity';
 
 @Controller('accounts')
 export class AccountsController {
@@ -12,13 +13,19 @@ export class AccountsController {
 		this.accountsService = accountsService;
 	}
 
-	@Post()
-	createAccount(@Body() createAccountDto: CreateAccountDto) {
-		const account = new Account(
-			createAccountDto.client, 
-			createAccountDto.typeAccount as 'CORRENTE' | 'POUPANÇA',
-			createAccountDto.balance, 
-			createAccountDto.status)
+	@Post('current')
+	createCurrentAccount(@Body() createAccountDto: CreateAccountDto) {
+		const account = new CurrentAccount(
+			createAccountDto.idClient,
+			createAccountDto.balance)
+		return this.accountsService.createAccount(account);
+	}
+
+	@Post('savings')
+	createSavingsAccount(@Body() createAccountDto: CreateAccountDto) {
+		const account = new SavingsAccount(
+			createAccountDto.idClient,
+			createAccountDto.balance)
 		return this.accountsService.createAccount(account);
 	}
 
@@ -27,39 +34,39 @@ export class AccountsController {
 		return this.accountsService.findAllAccount();
 	}
 
-	@Get(':id')
-	findOneAccount(@Param('id') id: string) {
-		return this.accountsService.findOneAccount(id);
+	@Get(':idBanckAccount')
+	findOneAccount(@Param('idBanckAccount') idBankAccount: string) {
+		return this.accountsService.findOneAccount(idBankAccount);
 	}
 
-	@Patch(':id')
-	updateAccount(@Param('id') id: string, @Body() updateAccountDto: UpdateAccountDto) {
-		return this.accountsService.updateAccount(id, updateAccountDto);
+	@Patch(':idBanckAccount')
+	updateAccount(@Param('idBanckAccount') idBankAccount: string, @Body() updateAccountDto: UpdateAccountDto) {
+		return this.accountsService.updateAccount(idBankAccount, updateAccountDto);
 	}
 
-	@Delete(':id')
-	removeAccount(@Param('id') id: string) {
-		return this.accountsService.removeAccount(id);
+	@Delete(':idBanckAccount')
+	removeAccount(@Param('idBanckAccount') idBankAccount: string) {
+		return this.accountsService.removeAccount(idBankAccount);
 	}
 
-	@Get(':id/:idAccount/balance')
-    checkBalance(@Param('id')id: string, @Param('idAccount') idAccount: string) {
-        return this.accountsService.checkBalance(id,idAccount);
+	@Get(':idBanckAccount/balance')
+    checkBalance(@Param('idBankAccount') idBankAccount: string) {
+        return this.accountsService.checkBalance(idBankAccount);
     }
 
-    @Put(':id/:idAccount')
-    deposit(@Param('id')id: string, @Param('idAccount') idAccount: string, @Body('value')value: number){
-        return this.accountsService.deposit(value, idAccount);
+    @Put(':idBanckAccount/deposit')
+    deposit( @Param('idBankAccount') idBankAccount: string, @Body('value')value: number){
+        return this.accountsService.deposit(idBankAccount, value);
     }
 
-    @Put(':id/:idAccount')
-    withdrawMoney(@Param('id')id: string, @Param('idAccount') idAccount: string, @Body('value')value: number){
-        return this.accountsService.withdrawMoney(value, idAccount);
+    @Put(':idBanckAccount/withdrawMoney')
+    withdrawMoney(@Param('idBankAccount') idBankAccount: string, @Body('value')value: number){
+        return this.accountsService.withdrawMoney(idBankAccount, value);
     }
 
-    @Put(':id/:idAccount/transfer')
-    transfer(@Param('id')id: string, @Param('idAccount') idAccount: string, @Body('value')value: number, @Body('destinationIdAccount')destinationIdAccount: string){
-        return this.accountsService.transfer(value, idAccount, destination);
+    @Put(':idBankAccount/:idBankAccount/transfer')
+    transfer( @Param('idBankAccount') idOriginAccount: string, @Param('idBankAccount') idDestinationAccount: string, @Body('value')value: number){
+        return this.accountsService.transfer(idOriginAccount, idDestinationAccount,value);
     }
 
 }

@@ -1,76 +1,54 @@
 import { Injectable } from '@nestjs/common';
 import { UpdateAccountDto } from '../../application/dtos/account/update-account.dto';
-import { Account } from '../entities/account/currentAccount.entity';
+import { BankAccount } from 'src/application/interfaces/banckAccount.interface';
 
 @Injectable()
 export class AccountsService {
-    private accounts: Account[] = [];
+    private accounts: BankAccount[] = [];
 
-    //CRUD Account
-    createAccount(account: Account): Account {
+    //CRUD BankAccount
+    createAccount(account: BankAccount): BankAccount {
         this.accounts.push(account);
         return account;
     }
 
-    findAllAccount(): Account[] {
+    findAllAccount(): BankAccount[] {
         return [...this.accounts];
     }
 
-    findOneAccount(id: string): Account {
-        return this.accounts.find((account) => account.idAccount === id);
+    findOneAccount(idBankAccount: string): BankAccount {
+        const findOne = this.accounts.find((account) => account.idBankAccount === idBankAccount);
+        return findOne;
     }
 
-    updateAccount(id: string, updateAccountDto: UpdateAccountDto) {
-        return `This action updates a #${id} account`;
+    updateAccount(idBankAccount: string, updateAccountDto: UpdateAccountDto) {
+        return `This action updates a #${idBankAccount} account`;
     }
 
-    removeAccount(id: string): Account[] {
-        return this.accounts = this.accounts.filter((account) => account.idAccount !== id);
+    removeAccount(idBankAccount: string): void {
+        this.accounts = this.accounts.filter((account) => account.idBankAccount !== idBankAccount);
+        console.log(`A conta ${idBankAccount} foi excluida com sucesso.` );
     }
 
-    //Método Account
-
-    checkBalance(idAccount: string, clientId): number {
-        const client = this.clientsService.findOne(clientId);
-        const account = client.account.find((account) => account.idAccount === idAccount);
-        return account.balance;
+    //Método BankAccount
+    checkBalance(idBankAccount:string): number{
+        const lookBalance = this.accounts.find((account) => account.idBankAccount === idBankAccount);
+        return lookBalance.checkBalance();
     }
 
-    deposit(value: number, idAccount: string): void {
-        const client = this.clientsService.findOne(id);
-        const account = client.account.find((account) => account.idAccount === idAccount)
-        if (account.status === true) {
-            account.balance = account.balance + value
-            console.log(`Seu saldo atual é de ${account.balance}.`);
-        } else {
-            console.log(`Operação de depósito inválida. Conta inexistente`);
-        }
+    deposit(idBankAccount: string, value:number): void{
+        const findOne = this.accounts.find((account) => account.idBankAccount === idBankAccount);
+        findOne.deposit(value);
     }
-
-    withdrawMoney(value: number, idAccount: string): void {
-        const client = this.clientsService.findOne(id);
-        const account = client.account.find((account) => account.idAccount === idAccount)
-        if (account.status === true) {
-            if (account.balance >= value) {
-                account.balance = account.balance - value;
-            } else {
-                console.log(`Saldo insuficiente`);
-            }
-        } else {
-            console.log(`Operação de saque inválida. Conta inexistete `);
-        }
+    withdrawMoney(idBankAccount: string, value:number): void{
+        const findOne = this.accounts.find((account) => account.idBankAccount === idBankAccount);
+        findOne.withdrawMoney(value);
     }
-
-    transfer(valueOfTransf: number, origin: Account, destination: Account): void {
-        const client = this.clientsService.findOne(id);
-        const account = client.account.find((account) => account.idAccount === idAccount)
-        const destination = this.accountsService.findOneAccount(destinationIdAccount)
-        if (origin.balance >= valueOfTransf && destination.status === true) {
-            origin.balance = origin.balance - valueOfTransf;
-            destination.balance = destination.balance + valueOfTransf;
-            console.log(`Transferencia realizada com sucesso, seu novo saldo é de ${origin.balance}.`);
-        } else {
-            console.log(`Você não tem saldo suficiente para esta transação, ou conta de destino inexistente`);
-        }
+    transfer(idOriginAccount: string, idDestinationAccount: string, value:number): void{
+        const origin = this.accounts.find((account) => account.idBankAccount === idOriginAccount);
+        const destination = this.accounts.find((account) => account.idBankAccount === idDestinationAccount);
+        origin.balance -+ value;
+        destination.transfer(destination, value);
+        
     }
 }

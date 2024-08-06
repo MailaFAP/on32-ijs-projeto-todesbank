@@ -14,9 +14,7 @@ export class ManagersController {
 
     @Post()
     createNewManager(@Body() createManagerDto: CreateManagerDto) {
-        const manager = new Manager(
-            createManagerDto.nameManager,
-            createManagerDto.clients)
+        const manager = new Manager(createManagerDto.nameManager)
         return this.managersService.createNewManager(manager);
     }
 

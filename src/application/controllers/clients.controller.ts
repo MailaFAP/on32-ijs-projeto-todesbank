@@ -19,7 +19,6 @@ export class ClientsController {
             createClientDto.adress,
             createClientDto.fone,
             createClientDto.income,
-            createClientDto.account,
             createClientDto.manager)
         return this.clientsService.create(client);
     }
